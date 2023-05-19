@@ -1,0 +1,18 @@
+import time
+import threading
+
+def work():
+    for i in range(10):
+        print("工作中....")
+        time.sleep(0.2)
+
+if __name__ == '__main__':
+    # 主线程结束不想等待子线程结束再结束·可以设置子线程守护主线程
+        # 1.threading.Thread(target=任务名, daemon =True)
+    # sub_thread = threading.Thread(target=work, daemon=True)
+        # 2.sub_thread.setDaemon(true)
+    sub_thread = threading.Thread(target=work)
+    sub_thread.setDaemon(True)
+    sub_thread.start()
+    time.sleep(1)
+    print("主线程结束了...")
